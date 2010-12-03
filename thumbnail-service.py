@@ -138,7 +138,9 @@ class MainPage(webapp.RequestHandler):
 
         url = 'http://%s/%s' % (domain, url_path)
         logging.info('retrieving %s' % url)
-        response = urlfetch.fetch(url=url)
+        response = urlfetch.fetch(url=url,
+					deadline=10,
+						)
         # Error handling
         if response.status_code!=200:
             self.response.headers = response.headers
