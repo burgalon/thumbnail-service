@@ -12,8 +12,7 @@ import datetime
 import time
 
 # CONSTANTS
-PROD_DOMAIN = '9folds.s3.amazonaws.com'
-DEV_DOMAIN = '9foldsdev.s3.amazonaws.com'
+DOMAINS=  ['9folds.s3.amazonaws.com', '9foldsdev.s3.amazonaws.com', '1linedev.s3.amazonaws.com', '1line.s3.amazonaws.com']
 
 def getImageInfo(data):
     data = str(data)
@@ -127,8 +126,8 @@ class MainPage(webapp.RequestHandler):
             self.response.set_status(304)
             return
 
-        domain = self.request.get('domain', PROD_DOMAIN)
-        if domain!= PROD_DOMAIN and domain!= DEV_DOMAIN:
+        domain = self.request.get('domain', DOMAINS[0])
+        if domain not in DOMAINS:
             self.response.out.write('Bad Request. Invalid domain %s' % domain)
             self.response.set_status(400)
             return

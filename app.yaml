@@ -1,5 +1,5 @@
 application: thumbnail-service
-version: 2
+version: 3
 runtime: python
 api_version: 1
 derived_file_type:
